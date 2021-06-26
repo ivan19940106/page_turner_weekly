@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨🏻‍💻</text></svg>">
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/content.css">
+
+    <script type="text/x-template" id="card-post">
+        <div class="card" id="card-screenshot">
+            <div class="card-image">
+                <div class="image-content">
+                    <img :src="cardData['image-content']" alt="">
+                </div>
+            </div>
+
+            <div class="card-text">
+                <h2 class="theme">
+                    {{cardData.theme}}
+                </h2>
+                <div class="info-wrapper">
+                    <div class="optional-label">
+                        {{cardData['optional-label']}}
+                    </div>
+                    <div class="info">
+                        {{cardData.info}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script  src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+    <!-- <script src="js/sketch.js"></script> -->
+
+    <title>資訊小卡</title>
+</head>
+<body>
+    <div class="main-content" id="app">
+        <div class="container">
+            <div class="ig-link-wrapper">
+                <a href="https://www.instagram.com/ivan19940106/" target="_blank" class="ig-link">
+                    <i class="icon-instagram"></i>
+                    <span class="instagram-account">@book_weekly</span>
+                </a>
+            </div>
+
+            <!-- index -->
+            <a v-if="path == 'index'" v-for="card in db.card" href="card_content.html" @click.prevent="toContentPage(card)" class="card-grid">
+                <div class="card">
+                    <div class="card-image">
+                        <div class="image-content">
+                            <img :src="card['image-content']" alt="">
+                        </div>
+                    </div>
+
+                    <div class="card-text">
+                        <h2 class="theme">
+                            {{card.theme}}
+                        </h2>
+                        <div class="info-wrapper">
+                            <div class="optional-label">
+                                {{card['optional-label']}}
+                            </div>
+                            <div class="info">
+                                {{card.info}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-title">
+                    {{card['grid-title']}}
+                </div>
+                <div v-html="card['grid-content']" class="grid-content"></div>
+            </a>
+
+            <!-- content-page -->
+            <div v-if="path == 'content-page'" class="nav">
+                <a href="index.html" class="prev-page-btn" @click.prevent="toIndex">Go Back</a>
+                <a href="" class="save-screenshot" :class="{show : ssSwitch == 'on'}" @click.prevent="screenshot">Screenshot!!</a>
+            </div>
+
+            <card-post v-if="path == 'content-page'" :card-data="activeCardData"></card-post>
+
+            <div v-if="path == 'content-page'" class="grid-title-content-page">
+                {{activeCardData['grid-title']}}
+            </div>
+
+            <div v-if="path == 'content-page'" v-html="activeCardData['grid-content']" class="grid-content-content-page"></div>
+
+            <div v-if="path == 'content-page'" class="source-wrapper">
+                <span class="source">參考文獻：</span>
+                <a :href="activeCardData['source-link']" class="source-link" target="_blank">{{activeCardData.source}}</a>
+            </div>
+
+            <div class="copyright-wrapper">
+                <span class="copyright">
+                    Copyright © <span class="copyright-year"></span> 電子辞書.ck.,<div class="all-rights-reserved">&nbsp;All Rights Reserved.&nbsp;</div>
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
