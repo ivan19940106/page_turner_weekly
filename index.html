@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/content.css">
 
-    <script type="text/x-template" id="card-post">
-        <div class="card" id="card-screenshot">
+    <script type="text/x-template" id="card-post-type0">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot">
             <div class="card-image">
                 <div class="image-content">
                     <img :src="cardData['image-content']" alt="">
@@ -39,46 +39,26 @@
     <script src="js/main.js"></script>
     <!-- <script src="js/sketch.js"></script> -->
 
-    <title>資訊小卡</title>
+    <title>每本書，都是一扇任意門！</title>
 </head>
 <body>
     <div class="main-content" id="app">
         <div class="container">
             <div class="ig-link-wrapper">
-                <a href="https://www.instagram.com/ivan19940106/" target="_blank" class="ig-link">
+                <a href="https://www.instagram.com/page_turner_weekly/" target="_blank" class="ig-link">
                     <i class="icon-instagram"></i>
-                    <span class="instagram-account">@book_weekly</span>
+                    <span class="instagram-account">@page_turner_weekly</span>
                 </a>
             </div>
 
             <!-- index -->
-            <a v-if="path == 'index'" v-for="card in db.card" href="card_content.html" @click.prevent="toContentPage(card)" class="card-grid">
-                <div class="card">
-                    <div class="card-image">
-                        <div class="image-content">
-                            <img :src="card['image-content']" alt="">
-                        </div>
-                    </div>
-
-                    <div class="card-text">
-                        <h2 class="theme">
-                            {{card.theme}}
-                        </h2>
-                        <div class="info-wrapper">
-                            <div class="optional-label">
-                                {{card['optional-label']}}
-                            </div>
-                            <div class="info">
-                                {{card.info}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <a v-if="path == 'index'" v-for="post in db.post" href="card_content.html" @click.prevent="toContentPage(post)" class="card-grid">
+                <card-post-type0 v-if="path == 'index'" :card-data="cardPostType0First(post)"></card-post-type0>
 
                 <div class="grid-title">
-                    {{card['grid-title']}}
+                    {{post['card']['grid-title']}}
                 </div>
-                <div v-html="card['grid-content']" class="grid-content"></div>
+                <div v-html="post['grid-content']" class="grid-content"></div>
             </a>
 
             <!-- content-page -->
@@ -87,22 +67,22 @@
                 <a href="" class="save-screenshot" :class="{show : ssSwitch == 'on'}" @click.prevent="screenshot">Screenshot!!</a>
             </div>
 
-            <card-post v-if="path == 'content-page'" :card-data="activeCardData"></card-post>
+            <card-post-type0 v-if="path == 'content-page'" v-for="card in cardPostType0" :card-data="card"></card-post-type0>
 
             <div v-if="path == 'content-page'" class="grid-title-content-page">
-                {{activeCardData['grid-title']}}
+                {{activePostData['grid-title']}}
             </div>
 
-            <div v-if="path == 'content-page'" v-html="activeCardData['grid-content']" class="grid-content-content-page"></div>
+            <div v-if="path == 'content-page'" v-html="activePostData['grid-content']" class="grid-content-content-page"></div>
 
             <div v-if="path == 'content-page'" class="source-wrapper">
                 <span class="source">參考文獻：</span>
-                <a :href="activeCardData['source-link']" class="source-link" target="_blank">{{activeCardData.source}}</a>
+                <a :href="activePostData['source-link']" class="source-link" target="_blank">{{activePostData.source}}</a>
             </div>
 
             <div class="copyright-wrapper">
                 <span class="copyright">
-                    Copyright © <span class="copyright-year"></span> 電子辞書.ck.,<div class="all-rights-reserved">&nbsp;All Rights Reserved.&nbsp;</div>
+                    Copyright © <span class="copyright-year"></span> 每本書，都是一扇任意門！<div class="all-rights-reserved">&nbsp;All Rights Reserved.&nbsp;</div>
                 </span>
             </div>
         </div>

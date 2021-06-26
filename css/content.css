@@ -50,6 +50,14 @@
     line-height: 36px;
 }
 
+.grid-content-content-page p {
+    margin-top: 35px;
+}
+
+.grid-content-content-page p:first-child {
+    margin-top: 0;
+}
+
 .source-wrapper {
     margin-top: 35px;
 }

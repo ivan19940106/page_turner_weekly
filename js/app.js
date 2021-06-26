@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", function(){
             .then(data => {
                 this.db = data;
                 var i = 0;console.log(window.location.hash);
-                while(window.location.hash != '' && i < data.card.length){
-                    if(window.location.hash == '#' + data['card'][i]['card-url-id']){
+                while(window.location.hash != '' && i < data.post.length){
+                    if(window.location.hash == '#' + data['post'][i]['post-url-id']){
                         this.path = 'content-page';
-                        this.activeCardData = data['card'][i];
+                        this.activePostData = data['post'][i];console.log(this.activePostData);
                     }
                     i++;
                 }
@@ -31,15 +31,20 @@ document.addEventListener("DOMContentLoaded", function(){
             return {
                 db : '',
                 path : 'index',
-                activeCardData : '',
+                activePostData : '',
                 ssSwitch : 'off'
             }
         },
+        computed: {
+            cardPostType0: function(){
+                return this.activePostData.card.filter(card => card.type === 0);
+            },
+        },
         methods: {
-            toContentPage(cardData){
-                this.activeCardData = cardData;
+            toContentPage(postData){
+                this.activePostData = postData;
                 this.path = 'content-page';
-                window.location.hash = cardData['card-url-id'];
+                window.location.hash = postData['post-url-id'];
                 if(window.location.search == '?ss=on'){
                     this.ssSwitch = 'on';
                 }
@@ -47,6 +52,13 @@ document.addEventListener("DOMContentLoaded", function(){
             toIndex(){
                 this.path = 'index';
                 window.location.hash = '';
+            },
+            cardPostType0First(thisPostData){
+                var indexCardData = '';
+                if(thisPostData.card[0]['type'] === 0){
+                    indexCardData = thisPostData.card[0];
+                    return indexCardData;
+                }
             },
             screenshot(){
                 html2canvas(document.getElementById('card-screenshot')).then(function(canvas) {
@@ -61,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 
-    app.component('card-post', {
-        template: '#card-post',
+    app.component('card-post-type0', {
+        template: '#card-post-type0',
         props: ['cardData'],
         data(){
             return {}
