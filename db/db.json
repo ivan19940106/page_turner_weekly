@@ -5,7 +5,7 @@
             ,"card" : [
                 {
                     "type" : 0
-                    ,"card-class" : "card-post-type0 "
+                    ,"card-class" : "card-post-type0"
                     ,"image-content" : "./images/nami.jpeg"
                     ,"theme" : "かながわおきなみうら"
                     ,"optional-label" : "木刻版畫"
@@ -22,7 +22,7 @@
             ,"card" : [
                 {
                     "type" : 0
-                    ,"card-class" : "card-post-type0 "
+                    ,"card-class" : "card-post-type0"
                     ,"image-content" : "./images/asanokei.jpeg"
                     ,"theme" : "日本橋 朝之景"
                     ,"optional-label" : "東海道五拾三次"
@@ -33,6 +33,30 @@
             ,"grid-content" : "<p>江戸から京都へ向かう東海道の起点である日本橋。その東海道を描いたシリーズの巻頭を飾るにふさわしく、参勤交代の大名行列が朝早く江戸を出発する様子が描かれています。一方で、魚を天秤棒で担いだ一団が、向こう岸にあった魚河岸から仕入れを終え、行商に出かける様子も描かれており、江戸で一番賑わっている早朝の日本橋の活気が伝わってきます。</p>"
             ,"source" : "日本橋 朝之景"
             ,"source-link" : "https://www.adachi-hanga.com/ukiyo-e/items/hiroshige013/"
+        },
+        {
+            "post-url-id" : "novel-can-fix"
+            ,"card" : [
+                {
+                    "type" : 1
+                    ,"card-class" : "card-post-type1"
+                    ,"book-cover-bgi" : "./images/novel-can-fix-cover.png"
+                    ,"book-name" : "只要出問題，小說都能搞定"
+                    ,"author" : "朱宥勳"
+                    ,"publish-date" : "2017/03"
+                    ,"summary" : "世界是複雜的文本，懂得小說技藝就可以拆解並掌握它。"
+                },
+                {
+                    "type" : 2
+                    ,"card-class" : "card-post-type2"
+                    ,"quote-bgi" : "./images/novel-can-fix-cover.png"
+                    ,"quote" : "工具會幫助你，也會限制你。除非我們不只會使用工具，還知道工具運作的基本原理。"
+                }
+            ]
+            ,"grid-title" : "只要出問題，小說都能搞定"
+            ,"grid-content" : "<p>人需要故事，並且依照故事結構做出現實的選擇。不管我們面對的是政治議題、社會時事還是商業操作，只要我們能夠看清楚故事與小說運作的基本機制，就能夠更看得懂世界是怎麼運行的。掌握了資訊，就掌握了這個時代；掌握了小說的技巧，就掌握了理解資訊、建構資訊的無上能力。</p>"
+            ,"source" : "只要出問題，小說都能搞定"
+            ,"source-link" : "https://www.books.com.tw/products/0010747442"
         }
     ]
 }

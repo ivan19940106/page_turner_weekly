@@ -17,6 +17,10 @@ html, body {
     color: #05052F;
 }
 
+ul, li {
+    list-style-type: none;
+}
+
 img {
     width: 100%;
 }
@@ -81,12 +85,20 @@ a:hover {
 }
 
 .card {
+    margin-bottom: 80px !important;
+}
+
+.card-grid .card {
+    margin-bottom: 0 !important;
+}
+
+/* card-post-type0 */
+
+.card-post-type0.card {
     position: relative;
     padding: 46px 40px;
     background-color: #EFE7DA;
 }
-
-/* card-post-type0 */
 
 .card-post-type0 .card-image {
     position: relative;
@@ -153,9 +165,103 @@ a:hover {
 
 /* card-post-type1 */
 
+.card-post-type1.card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    border: 1px solid #FFDAC6;
+}
 
+.card-post-type1 .book-cover {
+    width: 65%;
+    padding-top: 100%;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-post-type1 .book-info {
+    padding: 40px 20px;
+    position: relative;
+    width: 35%;
+    background-color: #FFDAC6;
+}
+
+.card-post-type1 .book-info::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent #FFDAC6 transparent transparent;
+}
+
+.card-post-type1 .book-info-text {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.card-post-type1 .book-info-text li {
+    margin-top: 20px;
+}
+
+.card-post-type1 .book-info-text li:first-child {
+    margin-top: 0;
+}
 
 /* card-post-type1 */
+
+/* card-post-type2 */
+
+.card-post-type2.card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-post-type2 .quote-bg {
+    width: 100%;
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    filter: blur(2px);
+    opacity: 0.5;
+}
+
+.card-post-type2 .quoteblock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 100px 40px;
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
+    font-size: 30px;
+    line-height: 60px;
+    color: #05052F;
+    border: 1px solid #05052F;
+}
+
+.card-post-type2 .quoteblock .icon-quote-left {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.card-post-type2 .quoteblock .icon-quote-right {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+}
+
+/* card-post-type2 */
 
 .grid-title {
     margin-top: 40px;
@@ -204,6 +310,12 @@ a:hover {
     }
 
     .card {
+        margin-bottom: 40px !important;
+    }
+
+    /* card-post-type0 */
+
+    .card-post-type0.card {
         padding: 15px 10px;
     }
 
@@ -234,6 +346,89 @@ a:hover {
         font-size: 12px;
         line-height: 18px;
     }
+
+    /* card-post-type0 */
+
+    /* card-post-type1 */
+
+    .card-post-type1 .book-info {
+        padding: 10px;
+        position: relative;
+        width: 35%;
+        background-color: #FFDAC6;
+    }
+
+    .card-post-type1 .book-info::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 25%;
+        left: -15px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 15px 15px 15px 0;
+        border-color: transparent #FFDAC6 transparent transparent;
+    }
+
+    .card-post-type1 .book-info-text {
+        font-size: 12px;
+        line-height: 24px;
+    }
+
+    .card-post-type1 .book-info-text li {
+        margin-top: 10px;
+    }
+
+    /* card-post-type1 */
+
+    /* card-post-type2 */
+
+    .card-post-type2.card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-post-type2 .quote-bg {
+        width: 100%;
+        padding-top: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        filter: blur(2px);
+        opacity: 0.5;
+    }
+
+    .card-post-type2 .quoteblock {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 60px 20px;
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+        font-size: 20px;
+        line-height: 40px;
+        color: #05052F;
+        border: 1px solid #05052F;
+    }
+
+    .card-post-type2 .quoteblock .icon-quote-left {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .card-post-type2 .quoteblock .icon-quote-right {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    /* card-post-type2 */
 
     .grid-title {
         margin-top: 20px;

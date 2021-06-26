@@ -39,6 +39,15 @@ document.addEventListener("DOMContentLoaded", function(){
             cardPostType0: function(){
                 return this.activePostData.card.filter(card => card.type === 0);
             },
+            cardPostType1: function(){
+                return this.activePostData.card.filter(card => card.type === 1);
+            },
+            cardPostType2: function(){
+                return this.activePostData.card.filter(card => card.type === 2);
+            },
+            cardPostType3: function(){
+                return this.activePostData.card.filter(card => card.type === 3);
+            }
         },
         methods: {
             toContentPage(postData){
@@ -60,6 +69,27 @@ document.addEventListener("DOMContentLoaded", function(){
                     return indexCardData;
                 }
             },
+            cardPostType1First(thisPostData){
+                var indexCardData = '';
+                if(thisPostData.card[0]['type'] === 1){
+                    indexCardData = thisPostData.card[0];
+                    return indexCardData;
+                }
+            },
+            cardPostType2First(thisPostData){
+                var indexCardData = '';
+                if(thisPostData.card[0]['type'] === 2){
+                    indexCardData = thisPostData.card[0];
+                    return indexCardData;
+                }
+            },
+            cardPostType3First(thisPostData){
+                var indexCardData = '';
+                if(thisPostData.card[0]['type'] === 3){
+                    indexCardData = thisPostData.card[0];
+                    return indexCardData;
+                }
+            },
             screenshot(){
                 html2canvas(document.getElementById('card-screenshot')).then(function(canvas) {
                     document.body.appendChild(canvas);
@@ -75,6 +105,30 @@ document.addEventListener("DOMContentLoaded", function(){
 
     app.component('card-post-type0', {
         template: '#card-post-type0',
+        props: ['cardData'],
+        data(){
+            return {}
+        }
+    });
+
+    app.component('card-post-type1', {
+        template: '#card-post-type1',
+        props: ['cardData'],
+        data(){
+            return {}
+        }
+    });
+
+    app.component('card-post-type2', {
+        template: '#card-post-type2',
+        props: ['cardData'],
+        data(){
+            return {}
+        }
+    });
+
+    app.component('card-post-type3', {
+        template: '#card-post-type3',
         props: ['cardData'],
         data(){
             return {}

@@ -3,12 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="每本書，都是一扇任意門！" />
+	<meta name="keywords" content="page_turner_weekly"/>
+	<meta name="description" content="翻開書本，就會發現一個嶄新的世界。廣大世界的幽微角落、從未見過的人生風景，都凝聚在這一本一本，只比手掌大一點的字裡行間中了。">
+	<meta property="og:type" content="website" />
+	<meta property='og:url' content='https://ivan19940106.github.io/page_turner_weekly/'/>
+	<meta property="og:image" content="https://ivan19940106.github.io/page_turner_weekly/images/nami.jpeg">
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="627" />
+
+	<meta name="twitter:card" content="summary">
+	<meta property="og:title" content="每本書，都是一扇任意門！">
+	<meta property="og:image" content="https://ivan19940106.github.io/page_turner_weekly/images/nami.jpeg">
+	<meta property="og:description" content="翻開書本，就會發現一個嶄新的世界。廣大世界的幽微角落、從未見過的人生風景，都凝聚在這一本一本，只比手掌大一點的字裡行間中了。">
+	<meta name="twitter:image" content="https://ivan19940106.github.io/page_turner_weekly/images/nami.jpeg" />
+
+	<meta name="robots" content="all">
+    <meta name="format-detection" content="telephone=no">
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨🏻‍💻</text></svg>">
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/content.css">
 
     <script type="text/x-template" id="card-post-type0">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot">
+            <div class="card-image">
+                <div class="image-content">
+                    <img :src="cardData['image-content']" alt="">
+                </div>
+            </div>
+
+            <div class="card-text">
+                <h2 class="theme">
+                    {{cardData.theme}}
+                </h2>
+                <div class="info-wrapper">
+                    <div class="optional-label">
+                        {{cardData['optional-label']}}
+                    </div>
+                    <div class="info">
+                        {{cardData.info}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="card-post-type1">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot">
+            <div class="book-cover" :style="{ backgroundImage: 'url(' + cardData['book-cover-bgi'] + ')'}"></div>
+
+            <div class="book-info">
+                <ul class="book-info-text">
+                    <li>
+                        <i class="icon-feather"></i>
+                        {{cardData['book-name']}}
+                    </li>
+                    <li>
+                        <i class="icon-user-outline"></i>
+                        {{cardData.author}}
+                    </li>
+                    <li>
+                        <i class="icon-print"></i>
+                        {{cardData['publish-date']}}
+                    </li>
+                    <li>
+                        <i class="icon-quote-left"></i>
+                        {{cardData.summary}}
+                        <i class="icon-quote-right"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="card-post-type2">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot">
+            <div class="quote-bg" :style="{ backgroundImage: 'url(' + cardData['quote-bgi'] + ')'}"></div>
+            <div class="quoteblock">
+                <i class="icon-quote-left"></i>
+                {{cardData.quote}}
+                <i class="icon-quote-right"></i>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="card-post-type3">
         <div :class="cardData['card-class']" class="card" id="card-screenshot">
             <div class="card-image">
                 <div class="image-content">
@@ -53,7 +134,10 @@
 
             <!-- index -->
             <a v-if="path == 'index'" v-for="post in db.post" href="card_content.html" @click.prevent="toContentPage(post)" class="card-grid">
-                <card-post-type0 v-if="path == 'index'" :card-data="cardPostType0First(post)"></card-post-type0>
+                <card-post-type0 v-if="path == 'index' && typeof cardPostType0First(post) != 'undefined'" :card-data="cardPostType0First(post)"></card-post-type0>
+                <card-post-type1 v-if="path == 'index' && typeof cardPostType1First(post) != 'undefined'" :card-data="cardPostType1First(post)"></card-post-type1>
+                <card-post-type2 v-if="path == 'index' && typeof cardPostType2First(post) != 'undefined'" :card-data="cardPostType2First(post)"></card-post-type2>
+                <card-post-type3 v-if="path == 'index' && typeof cardPostType3First(post) != 'undefined'" :card-data="cardPostType3First(post)"></card-post-type3>
 
                 <div class="grid-title">
                     {{post['card']['grid-title']}}
@@ -68,6 +152,9 @@
             </div>
 
             <card-post-type0 v-if="path == 'content-page'" v-for="card in cardPostType0" :card-data="card"></card-post-type0>
+            <card-post-type1 v-if="path == 'content-page'" v-for="card in cardPostType1" :card-data="card"></card-post-type1>
+            <card-post-type2 v-if="path == 'content-page'" v-for="card in cardPostType2" :card-data="card"></card-post-type2>
+            <card-post-type3 v-if="path == 'content-page'" v-for="card in cardPostType3" :card-data="card"></card-post-type3>
 
             <div v-if="path == 'content-page'" class="grid-title-content-page">
                 {{activePostData['grid-title']}}
