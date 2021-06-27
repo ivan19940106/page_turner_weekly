@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function(){
             })
             .then(data => {
                 this.db = data;
-                var i = 0;console.log(window.location.hash);
+                var i = 0;
                 while(window.location.hash != '' && i < data.post.length){
                     if(window.location.hash == '#' + data['post'][i]['post-url-id']){
                         this.path = 'content-page';
-                        this.activePostData = data['post'][i];console.log(this.activePostData);
+                        this.activePostData = data['post'][i];
                     }
                     i++;
                 }

@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/content.css">
 
     <script type="text/x-template" id="card-post-type0">
-        <div :class="cardData['card-class']" class="card" id="card-screenshot">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot-temp">
             <div class="card-image">
                 <div class="image-content">
                     <img :src="cardData['image-content']" alt="">
@@ -51,7 +51,7 @@
     </script>
 
     <script type="text/x-template" id="card-post-type1">
-        <div :class="cardData['card-class']" class="card" id="card-screenshot">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot-temp">
             <div class="book-cover" :style="{ backgroundImage: 'url(' + cardData['book-cover-bgi'] + ')'}"></div>
 
             <div class="book-info">
@@ -79,7 +79,7 @@
     </script>
 
     <script type="text/x-template" id="card-post-type2">
-        <div :class="cardData['card-class']" class="card" id="card-screenshot">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot-temp">
             <div class="quote-bg" :style="{ backgroundImage: 'url(' + cardData['quote-bgi'] + ')'}"></div>
             <div class="quoteblock">
                 <i class="icon-quote-left"></i>
@@ -90,7 +90,7 @@
     </script>
 
     <script type="text/x-template" id="card-post-type3">
-        <div :class="cardData['card-class']" class="card" id="card-screenshot">
+        <div :class="cardData['card-class']" class="card" id="card-screenshot-temp">
             <div class="card-image">
                 <div class="image-content">
                     <img :src="cardData['image-content']" alt="">
@@ -148,7 +148,7 @@
             <!-- content-page -->
             <div v-if="path == 'content-page'" class="nav">
                 <a href="index.html" class="prev-page-btn" @click.prevent="toIndex">Go Back</a>
-                <a href="" class="save-screenshot" :class="{show : ssSwitch == 'on'}" @click.prevent="screenshot">Screenshot!!</a>
+                <a href="" class="save-screenshot" :class="{show : ssSwitch == 'on'}" @click.prevent="screenshot(activePostData['card'])">Screenshot!!</a>
             </div>
 
             <card-post-type0 v-if="path == 'content-page'" v-for="card in cardPostType0" :card-data="card"></card-post-type0>
