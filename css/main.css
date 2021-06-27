@@ -169,7 +169,7 @@ a:hover {
     display: flex;
     justify-content: flex-start;
     align-items: stretch;
-    border: 1px solid #FFDAC6;
+    /* border: 1px solid #FFDAC6; */
 }
 
 .card-post-type1 .book-cover {
@@ -184,7 +184,8 @@ a:hover {
     padding: 40px 20px;
     position: relative;
     width: 35%;
-    background-color: #FFDAC6;
+    color: #fff;
+    background-color: #034C3C;
 }
 
 .card-post-type1 .book-info::before {
@@ -197,7 +198,7 @@ a:hover {
     height: 0;
     border-style: solid;
     border-width: 15px 15px 15px 0;
-    border-color: transparent #FFDAC6 transparent transparent;
+    border-color: transparent #034C3C transparent transparent;
 }
 
 .card-post-type1 .book-info-text {
@@ -231,7 +232,7 @@ a:hover {
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
-    filter: blur(2px);
+    filter: blur(2px) grayscale(30%);
     opacity: 0.5;
 }
 
@@ -355,7 +356,6 @@ a:hover {
         padding: 10px;
         position: relative;
         width: 35%;
-        background-color: #FFDAC6;
     }
 
     .card-post-type1 .book-info::before {
@@ -368,7 +368,7 @@ a:hover {
         height: 0;
         border-style: solid;
         border-width: 15px 15px 15px 0;
-        border-color: transparent #FFDAC6 transparent transparent;
+        border-color: transparent #034C3C transparent transparent;
     }
 
     .card-post-type1 .book-info-text {
@@ -398,8 +398,6 @@ a:hover {
         background-position: center;
         background-repeat: no-repeat;
         overflow: hidden;
-        filter: blur(2px);
-        opacity: 0.5;
     }
 
     .card-post-type2 .quoteblock {
@@ -410,8 +408,8 @@ a:hover {
         padding: 60px 20px;
         width: calc(100% - 40px);
         height: calc(100% - 40px);
-        font-size: 20px;
-        line-height: 40px;
+        font-size: 18px;
+        line-height: 36px;
         color: #05052F;
         border: 1px solid #05052F;
     }
