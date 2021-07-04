@@ -338,6 +338,7 @@ a:hover {
 
     .card-post-type0 .optional-label {
         border-right: none;
+        margin: 0;
         padding-right: 0;
         font-size: 12px;
         line-height: 18px;
